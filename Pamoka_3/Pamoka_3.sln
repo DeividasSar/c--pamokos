@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.32126.315
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pamoka_3", "Pamoka_3.csproj", "{A443F999-F330-4879-8A06-7EDE5D7E588B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A443F999-F330-4879-8A06-7EDE5D7E588B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A443F999-F330-4879-8A06-7EDE5D7E588B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A443F999-F330-4879-8A06-7EDE5D7E588B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A443F999-F330-4879-8A06-7EDE5D7E588B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {89B4957F-7C64-47BB-9F26-9B50649FCFE1}
+	EndGlobalSection
+EndGlobal
