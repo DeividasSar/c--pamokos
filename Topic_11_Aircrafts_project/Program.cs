@@ -6,7 +6,10 @@ namespace Topic_11_Aircrafts_project
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            var repGen = new ReportGenerator(new Repositories.AircraftRepository, new Repositories.AircraftModelRepository, new Repositories.CompanyRepository, new Repositories.CountryRepository);
+            
+
+            //var htmlFormatter = new
         }
     }
 }
