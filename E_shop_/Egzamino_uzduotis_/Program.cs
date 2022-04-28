@@ -9,11 +9,20 @@ namespace Egzamino_uzduotis_
     {
         static void Main(string[] args)
         {
-            //Kaip pasitikrinti bad list repo cia?
+            
 
             var bagRepository = new BagRepository();             // butina norint patestuoti BagRepository
-            var CustomerRepository = new CustomerRepository();
-            bagRepository.BagList();
+            var customerRepository = new CustomerRepository();
+
+            
+            
+            bagRepository.Retrieve();                           //Pasiimam is repo
+            List<Bag> bags = new List<Bag>();                   
+
+
+
+
+            //customerRepository.CustomerList();
             
 
         }

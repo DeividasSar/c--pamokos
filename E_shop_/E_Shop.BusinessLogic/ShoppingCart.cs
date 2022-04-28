@@ -8,8 +8,18 @@ namespace E_Shop.BusinessLogic
 {
     public class ShoppingCart
     {
-        BagRepository bagRepository = new BagRepository();
-        private readonly List<Bag> Bags = new List<Bag>();
+        public BagRepository BagRepository { get; set; }
+        public CustomerRepository CustomerRepository { get; set; }
+        public ShoppingCart() { }
+        public ShoppingCart (BagRepository bagRepository, CustomerRepository customerRepository)
+        {
+            BagRepository = bagRepository;
+            CustomerRepository = customerRepository;
+        }
+
+
+        
+
 
     }
 }

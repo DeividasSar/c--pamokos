@@ -29,7 +29,13 @@ namespace E_Shop.Repositories
             foreach (var item in Bags)
             {
                 Console.WriteLine($"{item.Name} {item.Id} {item.Color} {item.Type} {item.Price} {item.Material} {item.Whom}");
+
             }
+        }
+
+        public List<Bag> Retrieve ()
+        {
+            return Bags;
         }
 
        
