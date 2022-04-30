@@ -13,6 +13,8 @@ namespace E_Shop.Repositories.Entities
         public int ItemId { get; set; }
         public string Delivery { get; set; }
         public string Payment { get; set; }
+        public string LoginName { get; set; }
+        public string LoginPasword { get; set; }
 
         public Customer (string [] item)
         {
@@ -21,8 +23,10 @@ namespace E_Shop.Repositories.Entities
             PhoneNumber = Convert.ToInt32(item[2]);
             Address = item[3];
             ItemId = Convert.ToInt32(item[4]);
-            Delivery = item[4];
-            Payment = item[5];
+            Delivery = item[5];
+            Payment = item[6];
+            LoginName = item[7];
+            LoginPasword = item[8];
         }
 
     }

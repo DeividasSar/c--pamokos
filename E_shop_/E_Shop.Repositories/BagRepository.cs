@@ -28,14 +28,17 @@ namespace E_Shop.Repositories
         {
             foreach (var item in Bags)
             {
-                Console.WriteLine($"{item.Name} {item.Id} {item.Color} {item.Type} {item.Price} {item.Material} {item.Whom}");
-
+                Console.WriteLine($"{item.Name} {item.ItemId} {item.Color} {item.Type} {item.Price} {item.Material} {item.Whom}");
             }
         }
 
         public List<Bag> Retrieve ()
         {
             return Bags;
+        }
+        public List<Bag> GetByItemId(int id)
+        {
+            return Bags.Where(x => x.ItemId == id).ToList();
         }
 
        

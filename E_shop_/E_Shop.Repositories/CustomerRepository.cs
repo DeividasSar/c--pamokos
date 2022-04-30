@@ -2,6 +2,7 @@
 using E_Shop.Repositories.Entities;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace E_Shop.Repositories
@@ -24,11 +25,20 @@ namespace E_Shop.Repositories
             }
 
         }
+        public List<Customer> GetByCustomerLoginName(string name)
+        {
+            return Customers.Where(x => x.LoginName == name).ToList();
+        }
+        public List<Customer> GetByCustomerLoginPasword(string pasword)
+        {
+            return Customers.Where(x => x.LoginPasword == pasword).ToList();
+        }
+
         public void CustomerList()
         {
             foreach (var item in Customers)
             {
-                Console.WriteLine($"{item.Name} {item.OrderId} {item.PhoneNumber} {item.Address} {item.ItemId} {item.Delivery} {item.Payment}");
+                Console.WriteLine($"{item.Name} {item.OrderId} {item.PhoneNumber} {item.Address} {item.ItemId} {item.Delivery} {item.Payment} {item.LoginName} {item.LoginPasword}");
             
             }
         }
