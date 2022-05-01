@@ -28,7 +28,7 @@ namespace E_Shop.Repositories
         {
             foreach (var item in Bags)
             {
-                Console.WriteLine($"{item.Name} {item.ItemId} {item.Color} {item.Type} {item.Price} {item.Material} {item.Whom}");
+                Console.WriteLine($"{item.Name} {item.ItemId} {item.Color} {item.Type} {item.Price} {item.Material} {item.Whom} {item.InStock}");
             }
         }
 
@@ -36,12 +36,13 @@ namespace E_Shop.Repositories
         {
             return Bags;
         }
-        public List<Bag> GetByItemId(int id)
+        public List<Bag> GetByItemId(decimal id)
         {
             return Bags.Where(x => x.ItemId == id).ToList();
         }
-
-       
+        
+        
+           
 
     }
 }

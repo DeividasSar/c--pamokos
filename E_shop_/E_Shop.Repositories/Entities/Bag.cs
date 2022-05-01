@@ -13,7 +13,7 @@ namespace E_Shop.Repositories.Entities
         public decimal Price { get; set; }
         public string Material { get; set; }
         public string Whom { get; set; }
-
+        public decimal InStock { get; set; }
         public Bag (string[] item)
         {
             Name = item[0];
@@ -23,7 +23,7 @@ namespace E_Shop.Repositories.Entities
             Price = Convert.ToDecimal(item[4]);
             Material = item[5];
             Whom = item[6];
-
+            InStock = Convert.ToDecimal(item[7]);
         }
 
     }

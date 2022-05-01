@@ -6,6 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\E_Shop.BusinessLogic\E_Shop.BusinessLogic.csproj" />
     <ProjectReference Include="..\E_Shop.Common\E_Shop.Common.csproj" />
     <ProjectReference Include="..\E_Shop.Repositories\E_Shop.Repositories.csproj" />
   </ItemGroup>

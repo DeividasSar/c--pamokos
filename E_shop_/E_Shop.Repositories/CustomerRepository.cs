@@ -33,7 +33,7 @@ namespace E_Shop.Repositories
         {
             return Customers.Where(x => x.LoginPasword == pasword).ToList();
         }
-
+        
         public void CustomerList()
         {
             foreach (var item in Customers)
