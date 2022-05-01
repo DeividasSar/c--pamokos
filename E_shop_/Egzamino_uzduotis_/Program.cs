@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using E_Shop.BusinessLogic;
+using Newtonsoft.Json;
 
 namespace Egzamino_uzduotis_
 {
@@ -56,12 +57,13 @@ namespace Egzamino_uzduotis_
         }
         public static void  AdminMenu()
         {
-            
+            var bagRepository = new BagRepository();
+            var customerRepository = new CustomerRepository();
             bool done = true;
             do
             {
                 Console.Clear();
-                Console.WriteLine("Admin Menu: \n [1] Įdėti naujų kuprinių \n [0] Išeiti iš meniu ");
+                Console.WriteLine("Admin Menu: \n [1] Įdėti naujų kuprinių \n [2] Parduodamų kuprinių ataskaita \n [3] Klientų ataskaita \n [0] Išeiti iš meniu ");
                 int choose_2 = OrdersCreator.InputIsNumber();
                 switch (choose_2)
                 {
@@ -71,12 +73,27 @@ namespace Egzamino_uzduotis_
                     case 1:
                         AddNewBags.IdetiNaujuKupriniuMenu();
                         break;
+                    case 2:
+                        WriteObjectToTxt(bagRepository.Bags, @"C:\Users\Win 10\Desktop\.NET_mokymai\C#\13_tema_egzaminas\bag's\Bags_Ataskaita.txt");
+                        break;
+                    case 3:
+                        WriteObjectToTxt(customerRepository.Customers, @"C:\Users\Win 10\Desktop\.NET_mokymai\C#\13_tema_egzaminas\bag's\Customers_Ataskaita.txt");
+                        break;
                     default:
                         OrdersCreator.BadInput();
                         break;
                 }
             }
             while (done);
+        }
+        private static void WriteObjectToTxt(object obj, string path)
+        {
+            var json = JsonConvert.SerializeObject(obj, Formatting.Indented);
+
+            using (var sw = new StreamWriter(path))
+            {
+                sw.Write(json);
+            }
         }
     }
 }
