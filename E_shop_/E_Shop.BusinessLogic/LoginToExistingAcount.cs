@@ -14,6 +14,7 @@ namespace E_Shop.BusinessLogic
         { }
         
 
+
         public bool E_ShopMenuLogin()
         {
             Console.Clear();
@@ -61,6 +62,7 @@ namespace E_Shop.BusinessLogic
             Console.WriteLine("Sveikinu sėkmingai prisijungus prie kuprinių E-Shop ! [Enter] - tęsti");
             Console.ReadLine();
         }
+     
 
     }
 }

@@ -1,7 +1,11 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
+using System.Xml;
+using Newtonsoft.Json;
+using Formatting = Newtonsoft.Json.Formatting;
 
 namespace E_Shop.Common
 {
@@ -29,6 +33,15 @@ namespace E_Shop.Common
                 }
             }
 
+        }
+        public static void WriteObjectToTxt(object obj, string path)
+        {
+            var json = JsonConvert.SerializeObject(obj, Formatting.Indented);
+
+            using (var sw = new StreamWriter(path))
+            {
+                sw.Write(json);
+            }
         }
     }
 }

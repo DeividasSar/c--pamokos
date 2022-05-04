@@ -74,10 +74,10 @@ namespace Egzamino_uzduotis_
                         AddNewBags.IdetiNaujuKupriniuMenu();
                         break;
                     case 2:
-                        WriteObjectToTxt(bagRepository.Bags, @"C:\Users\Win 10\Desktop\.NET_mokymai\C#\13_tema_egzaminas\bag's\Bags_Ataskaita.txt");
+                        AddBagToCSV.WriteObjectToTxt(bagRepository.Bags, @"C:\Users\Win 10\Desktop\.NET_mokymai\C#\13_tema_egzaminas\bag's\Bags_Ataskaita.txt");
                         break;
                     case 3:
-                        WriteObjectToTxt(customerRepository.Customers, @"C:\Users\Win 10\Desktop\.NET_mokymai\C#\13_tema_egzaminas\bag's\Customers_Ataskaita.txt");
+                        AddBagToCSV.WriteObjectToTxt(customerRepository.Customers, @"C:\Users\Win 10\Desktop\.NET_mokymai\C#\13_tema_egzaminas\bag's\Customers_Ataskaita.txt");
                         break;
                     default:
                         OrdersCreator.BadInput();
@@ -86,15 +86,7 @@ namespace Egzamino_uzduotis_
             }
             while (done);
         }
-        private static void WriteObjectToTxt(object obj, string path)
-        {
-            var json = JsonConvert.SerializeObject(obj, Formatting.Indented);
-
-            using (var sw = new StreamWriter(path))
-            {
-                sw.Write(json);
-            }
-        }
+       
     }
 }
        
