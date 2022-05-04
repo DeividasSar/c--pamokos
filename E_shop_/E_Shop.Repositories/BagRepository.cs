@@ -32,10 +32,6 @@ namespace E_Shop.Repositories
             }
         }
 
-        public List<Bag> Retrieve ()
-        {
-            return Bags;
-        }
         public List<Bag> GetByItemId(decimal id)
         {
             return Bags.Where(x => x.ItemId == id).ToList();

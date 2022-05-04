@@ -36,5 +36,6 @@ namespace E_Shop.BusinessLogic
             addBagToCSV.AddBagToCsv(Name, ItemId, Color, Type, Price, Material, Whom, InStock);
 
         }
+        
     }
 }

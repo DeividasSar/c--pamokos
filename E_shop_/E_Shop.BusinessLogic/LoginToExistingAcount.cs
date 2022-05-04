@@ -12,29 +12,22 @@ namespace E_Shop.BusinessLogic
     {
         public LoginToExistingAcount()
         { }
+        private string LoginPasword;
         
 
 
         public bool E_ShopMenuLogin()
         {
             Console.Clear();
-            Console.WriteLine("Prašome įvesti prisijungimo duomenis: \n Vartotojo vardas:");
+            Console.WriteLine("Prašome įvesti prisijungimo duomenis: \nVartotojo vardas:");
             string name = Console.ReadLine();
-            string LoginName = null;
-            var customerRepository = new CustomerRepository();
-            foreach (var item in customerRepository.GetByCustomerLoginName(name))
-            {
-                Globals._LoginName = LoginName = item.LoginName;
-            }
-            if (LoginName == name)
+            Globals._LoginName = FindExistingCustomerLogin(name);
+            if (Globals._LoginName == name)
             {
                 Console.WriteLine("Įveskite slaptažodį:  ");
                 string pasword = Console.ReadLine();
-                string LoginPasword = null;
-                foreach (var item in customerRepository.GetByCustomerLoginPasword(pasword))
-                {
-                    LoginPasword = item.LoginPasword;
-                }
+                LoginPasword = FindExistingCustomerLogin(pasword);
+
                 if (LoginPasword == pasword)     //SĖKMINGAS PRISIJUNGIMAS
                 {
                     GoodInput();
@@ -61,6 +54,15 @@ namespace E_Shop.BusinessLogic
         {
             Console.WriteLine("Sveikinu sėkmingai prisijungus prie kuprinių E-Shop ! [Enter] - tęsti");
             Console.ReadLine();
+        }
+        public static string FindExistingCustomerLogin(string name)
+        {
+            var customerRepository = new CustomerRepository();
+            foreach (var item in customerRepository.GetByCustomerLoginName(name))
+            {
+                Globals._LoginName = item.LoginName;
+            }
+            return Globals._LoginName;
         }
      
 

@@ -17,7 +17,7 @@ namespace E_Shop.BusinessLogic
             {
                 Console.Clear();
                 Console.WriteLine($"E-parduotuvė - Rankų darbo kuprinės.   Prisijungęs: {Globals._LoginName}");
-                Console.WriteLine("[1] Parduodamos kuprinės \n [2] Užsakymo report \n [0] Išeiti iš meniu ");
+                Console.WriteLine("[1] Parduodamos kuprinės \n[2] Užsakymo report \n[0] Išeiti iš meniu ");
                 int choose_3 = InputIsNumber();
                 switch (choose_3)
                 {
@@ -70,7 +70,6 @@ namespace E_Shop.BusinessLogic
                 Console.WriteLine($"Kuprinių likutis {InStock} nepakankamas. [Enter] - grizti i pradini menu");
                 Console.ReadLine();
             }
-
 
 
 

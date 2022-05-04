@@ -34,10 +34,24 @@ namespace E_Shop.Test
             {
                 actualResult = foundFile.FullName;
             }
+            //Assert
+            Assert.AreEqual(expectedResult, actualResult);
+        }
+        [Test]
+        public void TestingFindExistingCustomerLogin()
+        {
+            //Arrange
+            string name = "Petras";
+            string expectedResult = "Petras"; //nes vardas ir Login name vienodi
+
+            //Act
+            string actualResult = LoginToExistingAcount.FindExistingCustomerLogin(name);
 
             //Assert
             Assert.AreEqual(expectedResult, actualResult);
         }
+
+
     }
 
 }
