@@ -31,10 +31,13 @@ namespace Restaurant.BusinessLogic
                         TableReservation.TableReservations(Globals._TableNumber, Globals._TableSeats, "Rezervuotas"); //Rezervuoti
                         break;
                     case 2:
-                        //Atlaisvinimas atsiskaitymas
+                        TableReservation.TableReservations(Globals._TableNumber, Globals._TableSeats, "Laisvas"); //Atlaisvinimas atsiskaitymas
                         break;
                     case 3:
-                        //Patiekalu meniu
+                        var mealRepository = new MealRepository();
+                        mealRepository.MealList(); //Patiekalu meniu
+                        MealOutput();              //Uzsakytas maistas kiekis
+                        OrderDatabase.AddOrder(Globals._MealId, Globals._MealName, Globals._MealPrice, Globals._MealPcs); //Iraso į database
                         break;
                     case 4:
                         //Gėrimu meniu
@@ -63,6 +66,21 @@ namespace Restaurant.BusinessLogic
                 Globals._TableSeats = item.Seats;
                 Globals._TableFreeOrTaken = item.FreeOrTaken;
             }
+        }
+        public static void MealOutput()
+        {
+            Console.WriteLine("Pasirinkite patiekalą: ");
+            Globals._MealId = OrdersCreator.InputIsNumber();
+            var mealRepository = new MealRepository();
+            Console.WriteLine("Jūsų pasirinktas patiekalas:");
+            foreach (var item in mealRepository.GetByItemId(Globals._MealId))
+            {
+                Globals._MealName = item.Name;
+                Globals._MealPrice = item.Price;
+                Console.WriteLine($"{Globals._MealId,10}" + "\t" + $"{Globals._MealName,10}" + "\t" + $"{Globals._MealPrice,10}");
+            }
+            Console.WriteLine("Įveskite kiekį:");
+            Globals._MealPcs = OrdersCreator.InputIsNumber();
         }
     }
 }

@@ -25,10 +25,6 @@ namespace Egzaminas_Restorano_sistema
                         ChooseTable();
                         Globals._TableNumber = OrdersCreator.InputIsNumber();
                         TableCheckIn.TableMenu();
-
-
-
-
                         break;
                     case 2:
                         //Aktyvus užsakymai
