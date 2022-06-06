@@ -14,7 +14,11 @@ namespace Restaurant.Common
         public static decimal _MealPrice = 0;
         public static int _MealPcs = 0;
         public static int _DrinkId = 0;
+        public static string _DrinkName = null;
+        public static decimal _DrinkPrice = 0;
+        public static int _DrinkPcs = 0;
+        public static decimal _TableSum = 0;
 
-      
+
     }
 }

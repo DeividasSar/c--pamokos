@@ -11,10 +11,9 @@ namespace Restaurant.Common
         { }
         public static void AddOrder (int Id, string Name, decimal Price, int Pcs)
         {
-            
             string table = Convert.ToString(Globals._TableNumber);
             string csvPath = @$"G:\.NET_mokymai\C#\Advanced_level\Egzamino_uzduotis\data\Tables\{table}.csv";
-            string csvLine = $"{Id};{Name};{Price};{Pcs}" + Environment.NewLine;
+            string csvLine = $"{Id};{Name};{Price};{Pcs};{"Nesumoketa"}" + Environment.NewLine;
             byte[] csvLineBytes = Encoding.Default.GetBytes(csvLine);
             using (MemoryStream ms = new MemoryStream())
             {
@@ -32,10 +31,14 @@ namespace Restaurant.Common
             }
 
         }
-        //var path = @"G:\.NET_mokymai\C#\Advanced_level\Egzamino_uzduotis\data\Tables.csv";
-        //var allLines = File.ReadAllLines(path);
-        //int line = Convert.ToInt32(Globals._TableNumber) - 1;
-        //allLines[line] = $"{Number};{Seats};{FreeOrTaken}";
-        //    File.WriteAllLines(path, allLines);
+        public static void PayOrder(int Id, string Name, decimal Price, int Pcs)
+        {
+            //string table = Convert.ToString(Globals._TableNumber);
+            //var path = @$"G:\.NET_mokymai\C#\Advanced_level\Egzamino_uzduotis\data\Tables\{table}.csv";
+            //var allLines = File.ReadAllLines(path);
+            //int line = Convert.ToInt32(Globals._TableNumber) - 1;
+            //allLines[line] = $"{Id};{Name};{Price};{Pcs};{"Sumoketa"}";
+            //File.WriteAllLines(path, allLines);
+    }
     }    
 }

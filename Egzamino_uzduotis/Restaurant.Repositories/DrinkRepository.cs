@@ -21,10 +21,11 @@ namespace Restaurant.Repositories
                 foreach (var value in data)
                 {
                     Drinks.Add(new Drink(value));
+
                 }
             }
         }
-        public void MealList()
+        public void DrinkList()
         {
             Console.Clear();
             Console.WriteLine($"{"ID",10}" + "\t" + $"{"Pavadinimas",10}" + "\t" + $"{"Kaina",10}");
@@ -32,7 +33,6 @@ namespace Restaurant.Repositories
             {
                 Console.WriteLine($"{item.Id,10}" + "\t" + $"{item.Name,10}" + "\t" + $"{item.Price,10}");
             }
-
         }
         public List<Drink> GetByItemId(decimal id)
         {

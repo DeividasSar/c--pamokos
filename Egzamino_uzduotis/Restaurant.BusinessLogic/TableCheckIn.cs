@@ -31,7 +31,12 @@ namespace Restaurant.BusinessLogic
                         TableReservation.TableReservations(Globals._TableNumber, Globals._TableSeats, "Rezervuotas"); //Rezervuoti
                         break;
                     case 2:
-                        TableReservation.TableReservations(Globals._TableNumber, Globals._TableSeats, "Laisvas"); //Atlaisvinimas atsiskaitymas
+                        var orderRepository = new OrderRepository();
+                        orderRepository.OrderList();
+                        Console.WriteLine($"Užsakymų suma: {Globals._TableSum}");
+                        Console.ReadLine();
+                        Console.WriteLine("Norėdami sumokėti");
+                        //TableReservation.TableReservations(Globals._TableNumber, Globals._TableSeats, "Laisvas"); //Atlaisvinamas atsiskaitymas
                         break;
                     case 3:
                         var mealRepository = new MealRepository();
@@ -40,7 +45,10 @@ namespace Restaurant.BusinessLogic
                         OrderDatabase.AddOrder(Globals._MealId, Globals._MealName, Globals._MealPrice, Globals._MealPcs); //Iraso į database
                         break;
                     case 4:
-                        //Gėrimu meniu
+                        var drinkRepository = new DrinkRepository();
+                        drinkRepository.DrinkList(); //Gėrimu meniu
+                        DrinkOutput();
+                        OrderDatabase.AddOrder(Globals._DrinkId, Globals._DrinkName, Globals._DrinkPrice, Globals._DrinkPcs);
                         break;
                     case 5:
                         //Uzsakymo informacija
@@ -82,5 +90,21 @@ namespace Restaurant.BusinessLogic
             Console.WriteLine("Įveskite kiekį:");
             Globals._MealPcs = OrdersCreator.InputIsNumber();
         }
+        public static void DrinkOutput()
+        {
+            Console.WriteLine("Pasirinkite gėrimą: ");
+            Globals._DrinkId = OrdersCreator.InputIsNumber();
+            var drinkRepository = new DrinkRepository();
+            Console.WriteLine("Jūsų pasirinktas gėrimas:");
+            foreach (var item in drinkRepository.GetByItemId(Globals._DrinkId))
+            {
+                Globals._DrinkName = item.Name;
+                Globals._DrinkPrice = item.Price;
+                Console.WriteLine($"{Globals._DrinkId,10}" + "\t" + $"{Globals._DrinkName,10}" + "\t" + $"{Globals._DrinkPrice,10}");
+            }
+            Console.WriteLine("Įveskite kiekį:");
+            Globals._DrinkPcs = OrdersCreator.InputIsNumber();
+        }
+       
     }
 }
