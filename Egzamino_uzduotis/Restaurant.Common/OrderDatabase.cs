@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Text;
 
@@ -33,12 +32,20 @@ namespace Restaurant.Common
         }
         public static void PayOrder(int Id, string Name, decimal Price, int Pcs)
         {
-            //string table = Convert.ToString(Globals._TableNumber);
-            //var path = @$"G:\.NET_mokymai\C#\Advanced_level\Egzamino_uzduotis\data\Tables\{table}.csv";
-            //var allLines = File.ReadAllLines(path);
-            //int line = Convert.ToInt32(Globals._TableNumber) - 1;
-            //allLines[line] = $"{Id};{Name};{Price};{Pcs};{"Sumoketa"}";
-            //File.WriteAllLines(path, allLines);
-    }
+            string table = Convert.ToString(Globals._TableNumber);
+            var path = @$"G:\.NET_mokymai\C#\Advanced_level\Egzamino_uzduotis\data\Tables\{table}.csv";
+            var allLines = File.ReadAllLines(path);
+            var length = allLines.Length;
+
+            for (int line = 0; line < length; line++)
+            {
+                allLines[line] = $"{Id};{Name};{Price};{Pcs};{"Sumoketa"}";
+                File.WriteAllLines(path, allLines);
+            }
+
+
+
+
+        }
     }    
 }

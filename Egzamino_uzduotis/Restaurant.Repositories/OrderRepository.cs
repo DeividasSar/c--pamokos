@@ -23,6 +23,7 @@ namespace Restaurant.Repositories
                 {
                    Orders.Add(new Order(value));
                    Globals._TableSum = Orders.Sum(x => x.Price*x.Pcs);
+
                 }
             }
         }
@@ -33,10 +34,15 @@ namespace Restaurant.Repositories
             foreach (var item in Orders)
             {
                 Console.WriteLine($"{item.Id,10}" + "\t" + $"{item.Name,10}" + "\t" + $"{item.Price,10}" + "\t" + $"{item.Pcs,10}" + "\t" + $"{item.Status,10}");
-               
-            }
+                Globals._OrderId = item.Id;
+                Globals._OrderName = item.Name;
+                Globals._OrderPrice = item.Price;
+                Globals._OrderPcs = item.Pcs;
+                Globals._OrderStatus = item.Status;
 
-        }
+            }
+    
+    }
 
     }
 }

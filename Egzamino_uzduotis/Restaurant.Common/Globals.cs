@@ -18,6 +18,13 @@ namespace Restaurant.Common
         public static decimal _DrinkPrice = 0;
         public static int _DrinkPcs = 0;
         public static decimal _TableSum = 0;
+        public static int _OrderId = 0;
+        public static string _OrderName = null;
+        public static decimal _OrderPrice = 0;
+        public static int _OrderPcs = 0;
+        public static string _OrderStatus = null;
+
+       
 
 
     }

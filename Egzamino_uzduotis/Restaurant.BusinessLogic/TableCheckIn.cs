@@ -20,7 +20,7 @@ namespace Restaurant.BusinessLogic
                 Console.WriteLine("Jūs pasirinkote staliuką:");
                 Console.WriteLine($"{"Staliuko Nr.",10}" + "\t" + $"{"Vietų sk.",10}" + "\t" + $"{"Užimtumas",10}");
                 ChoosenTable();
-                Console.WriteLine("Staliuko MENIU: \n [1] Rezervuoti \n [2] Atlaisvinti/Atsiskaitymas \n [3] Patiekalų meniu \n [4] Gėrimų meniu \n [5] Užsakymo informacija \n [0] Išeiti");
+                Console.WriteLine("Staliuko MENIU: \n [1] Rezervuoti \n [2] Atlaisvinti/Atsiskaitymas \n [3] Patiekalų meniu \n [4] Gėrimų meniu \n [5] Užsakymų informacija \n [0] Išeiti");
                 int choose_1 = OrdersCreator.InputIsNumber();
                 switch (choose_1)
                 {
@@ -31,27 +31,27 @@ namespace Restaurant.BusinessLogic
                         TableReservation.TableReservations(Globals._TableNumber, Globals._TableSeats, "Rezervuotas"); //Rezervuoti
                         break;
                     case 2:
-                        var orderRepository = new OrderRepository();
-                        orderRepository.OrderList();
-                        Console.WriteLine($"Užsakymų suma: {Globals._TableSum}");
-                        Console.ReadLine();
-                        Console.WriteLine("Norėdami sumokėti");
-                        //TableReservation.TableReservations(Globals._TableNumber, Globals._TableSeats, "Laisvas"); //Atlaisvinamas atsiskaitymas
+                        try
+                        {
+                            new OrderRepository().OrderList();
+                        }
+                        catch (System.FormatException)
+                        {
+                            EmtyDataBase();
+                            break;
+                        }
+                            PayingForMeal();
                         break;
                     case 3:
-                        var mealRepository = new MealRepository();
-                        mealRepository.MealList(); //Patiekalu meniu
-                        MealOutput();              //Uzsakytas maistas kiekis
-                        OrderDatabase.AddOrder(Globals._MealId, Globals._MealName, Globals._MealPrice, Globals._MealPcs); //Iraso į database
+                        WritingMealToDataBase();
                         break;
                     case 4:
-                        var drinkRepository = new DrinkRepository();
-                        drinkRepository.DrinkList(); //Gėrimu meniu
-                        DrinkOutput();
-                        OrderDatabase.AddOrder(Globals._DrinkId, Globals._DrinkName, Globals._DrinkPrice, Globals._DrinkPcs);
+                        WritingDrinkToDataBase();
                         break;
                     case 5:
-                        //Uzsakymo informacija
+                        var orderRepository1 = new OrderRepository();
+                        orderRepository1.OrderList();
+                        Console.ReadLine();
                         break;
                     default:
                         OrdersCreator.BadInput();
@@ -104,6 +104,39 @@ namespace Restaurant.BusinessLogic
             }
             Console.WriteLine("Įveskite kiekį:");
             Globals._DrinkPcs = OrdersCreator.InputIsNumber();
+        }
+        public static void PayingForMeal ()
+        {
+            var orderRepository = new OrderRepository();
+            orderRepository.OrderList();
+            Console.WriteLine($"Užsakymų suma: {Globals._TableSum} eur");
+            Console.WriteLine("Norėdami sumokėti užsakymą spauskite [Enter]");
+            Console.ReadLine();
+            OrderDatabase.PayOrder(Globals._OrderId, Globals._OrderName, Globals._OrderPrice, Globals._OrderPcs);
+            Console.WriteLine($"Sėkmingai sumokėjote {Globals._TableSum} eur ir atlaisvinote staliuką [Enter] - tęsti");
+            TableReservation.TableReservations(Globals._TableNumber, Globals._TableSeats, "Laisvas"); //Atlaisvinamas atsiskaitymas
+            Console.ReadLine();
+        }
+        public static void EmtyDataBase ()
+        {
+            Console.WriteLine("Nėra pridėtų užsakymų.. Rezervacija atšaukiama");
+            TableReservation.TableReservations(Globals._TableNumber, Globals._TableSeats, "Laisvas");
+            Console.ReadLine();
+        }
+        public static void WritingMealToDataBase()
+        {
+            var mealRepository = new MealRepository();
+            mealRepository.MealList(); //Patiekalu meniu
+            MealOutput();              //Uzsakytas maistas kiekis
+            OrderDatabase.AddOrder(Globals._MealId, Globals._MealName, Globals._MealPrice, Globals._MealPcs); //Iraso į database
+        }
+        public static void WritingDrinkToDataBase()
+        {
+            var drinkRepository = new DrinkRepository();
+            drinkRepository.DrinkList(); //Gėrimu meniu
+            DrinkOutput();
+            OrderDatabase.AddOrder(Globals._DrinkId, Globals._DrinkName, Globals._DrinkPrice, Globals._DrinkPcs);
+
         }
        
     }

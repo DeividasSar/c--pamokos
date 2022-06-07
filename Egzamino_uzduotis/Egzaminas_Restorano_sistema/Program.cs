@@ -27,9 +27,6 @@ namespace Egzaminas_Restorano_sistema
                         TableCheckIn.TableMenu();
                         break;
                     case 2:
-                        //Aktyvus užsakymai
-                        break;
-                    case 3:
                         //Įvykdyti užsakymai, čekiai
                         break;
 
@@ -45,7 +42,7 @@ namespace Egzaminas_Restorano_sistema
         public static void RestaurantMenu1()
         {
             Console.Clear();
-            Console.WriteLine("Sveiki čia Restorano užsakymų valdymo sistema \n [1] Staliukai (laisvi/užimti) \n [2] Aktyvūs užsakymai \n [3] Įvykdyti užsakymai/čekiai \n [0] Išeiti iš sistemos ");
+            Console.WriteLine("Sveiki čia Restorano užsakymų valdymo sistema \n [1] Staliukai (laisvi/užimti) \n [2] Įvykdyti užsakymai/čekiai \n [0] Išeiti iš sistemos ");
         }
         public static void ChooseTable()
         {
