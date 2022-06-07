@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
@@ -22,5 +23,15 @@ namespace Restaurant.Common
             }
 
         }
+        public static void WriteObjectToTxt(object obj, string path)
+        {
+            var json = JsonConvert.SerializeObject(obj, Formatting.Indented);
+
+            using (var sw = new StreamWriter(path))
+            {
+                sw.Write(json);
+            }
+        }
     }
+
 }

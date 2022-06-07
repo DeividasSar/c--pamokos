@@ -1,0 +1,32 @@
+[
+  {
+    "Number": 1.0,
+    "Seats": 2.0,
+    "FreeOrTaken": "Laisvas"
+  },
+  {
+    "Number": 2.0,
+    "Seats": 2.0,
+    "FreeOrTaken": "Laisvas"
+  },
+  {
+    "Number": 3.0,
+    "Seats": 3.0,
+    "FreeOrTaken": "Laisvas"
+  },
+  {
+    "Number": 4.0,
+    "Seats": 3.0,
+    "FreeOrTaken": "Laisvas"
+  },
+  {
+    "Number": 5.0,
+    "Seats": 4.0,
+    "FreeOrTaken": "Laisvas"
+  },
+  {
+    "Number": 6.0,
+    "Seats": 5.0,
+    "FreeOrTaken": "Laisvas"
+  }
+]

@@ -7,6 +7,7 @@ namespace Restaurant.Common
     public static class Globals
     {
         public static decimal _TableNumber = 0;
+        public static bool _TableEmty = true;
         public static decimal _TableSeats = 0;
         public static string _TableFreeOrTaken = null;
         public static int _MealId = 0;

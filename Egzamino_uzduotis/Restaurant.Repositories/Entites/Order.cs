@@ -13,6 +13,8 @@ namespace Restaurant.Repositories.Entites
         public string Status { get; set; }
         public Order(string[] item)
         {
+            
+            
             Id = Convert.ToInt32(item[0]);
             Name = item[1];
             Price = Convert.ToDecimal(item[2]);

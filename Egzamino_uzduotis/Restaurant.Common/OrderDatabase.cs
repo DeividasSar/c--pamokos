@@ -8,7 +8,7 @@ namespace Restaurant.Common
     {
         public OrderDatabase()
         { }
-        public static void AddOrder (int Id, string Name, decimal Price, int Pcs)
+        public static void AddOrder (decimal Id, string Name, decimal Price, int Pcs)
         {
             string table = Convert.ToString(Globals._TableNumber);
             string csvPath = @$"G:\.NET_mokymai\C#\Advanced_level\Egzamino_uzduotis\data\Tables\{table}.csv";
@@ -30,7 +30,7 @@ namespace Restaurant.Common
             }
 
         }
-        public static void PayOrder(int Id, string Name, decimal Price, int Pcs)
+        public static void PayOrder(decimal Id, string Name, decimal Price, int Pcs)
         {
             string table = Convert.ToString(Globals._TableNumber);
             var path = @$"G:\.NET_mokymai\C#\Advanced_level\Egzamino_uzduotis\data\Tables\{table}.csv";
@@ -42,10 +42,21 @@ namespace Restaurant.Common
                 allLines[line] = $"{Id};{Name};{Price};{Pcs};{"Sumoketa"}";
                 File.WriteAllLines(path, allLines);
             }
-
-
-
-
+        }
+        public static void IfEmtyDataBase ()
+        { 
+            string table = Convert.ToString(Globals._TableNumber);
+            var path = @$"G:\.NET_mokymai\C#\Advanced_level\Egzamino_uzduotis\data\Tables\{table}.csv";
+            var allLines = File.ReadAllLines(path);
+            var length = allLines.Length;
+            if (length>1)
+            {
+                Globals._TableEmty = false;
+            }
+            else
+            {
+                Globals._TableEmty = true;
+            }
         }
     }    
 }

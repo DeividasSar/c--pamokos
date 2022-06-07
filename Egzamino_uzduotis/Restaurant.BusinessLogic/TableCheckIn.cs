@@ -3,6 +3,9 @@ using Restaurant.Common;
 using Restaurant.Repositories;
 using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Net.Mail;
+using System.Net.Mime;
 using System.Text;
 
 namespace Restaurant.BusinessLogic
@@ -14,34 +17,31 @@ namespace Restaurant.BusinessLogic
         public static void TableMenu()
         {
             bool done = true;
+            var orderRepository = new OrderRepository();
             do
             {
-                Console.Clear();
-                Console.WriteLine("Jūs pasirinkote staliuką:");
-                Console.WriteLine($"{"Staliuko Nr.",10}" + "\t" + $"{"Vietų sk.",10}" + "\t" + $"{"Užimtumas",10}");
-                ChoosenTable();
-                Console.WriteLine("Staliuko MENIU: \n [1] Rezervuoti \n [2] Atlaisvinti/Atsiskaitymas \n [3] Patiekalų meniu \n [4] Gėrimų meniu \n [5] Užsakymų informacija \n [0] Išeiti");
-                int choose_1 = OrdersCreator.InputIsNumber();
+                 TableMenuStart();
+                 int choose_1 = OrdersCreator.InputIsNumber();
                 switch (choose_1)
                 {
                     case 0:
                         done = false;
                         break;
                     case 1:
-                        TableReservation.TableReservations(Globals._TableNumber, Globals._TableSeats, "Rezervuotas"); //Rezervuoti
+                        TableReservation.TableReservations(Globals._TableNumber, Globals._TableSeats, "Rezervuotas");
                         break;
                     case 2:
-                        try
-                        {
-                            new OrderRepository().OrderList();
-                        }
-                        catch (System.FormatException)
+                        OrderDatabase.IfEmtyDataBase();
+                        if (Globals._TableEmty == true)
                         {
                             EmtyDataBase();
                             break;
                         }
+                        else
+                        {
                             PayingForMeal();
-                        break;
+                            break;
+                        }
                     case 3:
                         WritingMealToDataBase();
                         break;
@@ -49,9 +49,20 @@ namespace Restaurant.BusinessLogic
                         WritingDrinkToDataBase();
                         break;
                     case 5:
-                        var orderRepository1 = new OrderRepository();
-                        orderRepository1.OrderList();
-                        Console.ReadLine();
+                        OrderDatabase.IfEmtyDataBase();
+                        if (Globals._TableEmty == true)
+                        {
+                            EmtyDataBase();
+                            break;
+                        }
+                        else
+                        {
+                            orderRepository.OrderList();
+                            Console.ReadLine();
+                            break;
+                        }
+                    case 6:
+                        CreateCheck();
                         break;
                     default:
                         OrdersCreator.BadInput();
@@ -59,6 +70,15 @@ namespace Restaurant.BusinessLogic
                 }
 
             } while (done);
+        }
+        public static void TableMenuStart ()
+        {
+            Console.Clear();
+            Console.WriteLine("Jūs pasirinkote staliuką:");
+            Console.WriteLine($"{"Staliuko Nr.",10}" + "\t" + $"{"Vietų sk.",10}" + "\t" + $"{"Užimtumas",10}");
+            ChoosenTable();
+            Console.WriteLine("Staliuko MENIU: \n [1] Rezervuoti \n [2] Atlaisvinti/Atsiskaitymas \n [3] Patiekalų meniu \n [4] Gėrimų meniu \n [5] Užsakymų informacija \n [6] Čekio spausdinimas \n [0] Išeiti");
+
         }
         public static void ChoosenTable()
         {
@@ -119,7 +139,7 @@ namespace Restaurant.BusinessLogic
         }
         public static void EmtyDataBase ()
         {
-            Console.WriteLine("Nėra pridėtų užsakymų.. Rezervacija atšaukiama");
+            Console.WriteLine("Nėra pridėtų užsakymų.. Atšaukiama rezervacija");
             TableReservation.TableReservations(Globals._TableNumber, Globals._TableSeats, "Laisvas");
             Console.ReadLine();
         }
@@ -138,6 +158,12 @@ namespace Restaurant.BusinessLogic
             OrderDatabase.AddOrder(Globals._DrinkId, Globals._DrinkName, Globals._DrinkPrice, Globals._DrinkPcs);
 
         }
+        public static void CreateCheck ()
+        {
+            var orderRepository1 = new OrderRepository();
+            FileReaderService.WriteObjectToTxt(orderRepository1.Orders, $@"G:\.NET_mokymai\C#\Advanced_level\Egzamino_uzduotis\data\Cekis_{Globals._TableNumber}_staliuko.txt");
+        }
+       
        
     }
 }

@@ -26,10 +26,6 @@ namespace Egzaminas_Restorano_sistema
                         Globals._TableNumber = OrdersCreator.InputIsNumber();
                         TableCheckIn.TableMenu();
                         break;
-                    case 2:
-                        //Įvykdyti užsakymai, čekiai
-                        break;
-
                     default:
                         OrdersCreator.BadInput();
                         break;
@@ -42,7 +38,7 @@ namespace Egzaminas_Restorano_sistema
         public static void RestaurantMenu1()
         {
             Console.Clear();
-            Console.WriteLine("Sveiki čia Restorano užsakymų valdymo sistema \n [1] Staliukai (laisvi/užimti) \n [2] Įvykdyti užsakymai/čekiai \n [0] Išeiti iš sistemos ");
+            Console.WriteLine("Sveiki čia Restorano užsakymų valdymo sistema \n [1] Staliukai (laisvi/užimti) \n [0] Išeiti iš sistemos ");
         }
         public static void ChooseTable()
         {
