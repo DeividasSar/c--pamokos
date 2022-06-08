@@ -21,7 +21,7 @@ namespace Egzaminas_Restorano_sistema
                         break;
                     case 1:
                         var tableRepository = new TableRepository();
-                        tableRepository.TableList();
+                        tableRepository.ItemsList();
                         ChooseTable();
                         Globals._TableNumber = OrdersCreator.InputIsNumber();
                         TableCheckIn.TableMenu();

@@ -1,5 +1,6 @@
 ﻿using Restaurant.Common;
 using Restaurant.Repositories.Entites;
+using Restaurant.Repositories.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Text;
 
 namespace Restaurant.Repositories
 {
-    public class MealRepository
+    public class MealRepository : IRepository
     {
         public List<Meal> Meals { get; set; }
         public MealRepository()
@@ -24,7 +25,7 @@ namespace Restaurant.Repositories
                 }
             }
         }
-        public void MealList()
+        public void ItemsList()
         {
             Console.Clear();
             Console.WriteLine($"{"ID",10}" + "\t" + $"{"Pavadinimas",10}" + "\t" + $"{"Kaina",10}");

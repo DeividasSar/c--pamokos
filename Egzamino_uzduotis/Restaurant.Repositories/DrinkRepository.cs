@@ -1,5 +1,6 @@
 ﻿using Restaurant.Common;
 using Restaurant.Repositories.Entites;
+using Restaurant.Repositories.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Text;
 
 namespace Restaurant.Repositories
 {
-    public class DrinkRepository
+    public class DrinkRepository : IRepository
     {
         public List<Drink> Drinks { get; set; }
         public DrinkRepository()
@@ -25,7 +26,7 @@ namespace Restaurant.Repositories
                 }
             }
         }
-        public void DrinkList()
+        public void ItemsList()
         {
             Console.Clear();
             Console.WriteLine($"{"ID",10}" + "\t" + $"{"Pavadinimas",10}" + "\t" + $"{"Kaina",10}");
@@ -38,6 +39,8 @@ namespace Restaurant.Repositories
         {
             return Drinks.Where(x => x.Id == id).ToList();
         }
+      
 
+       
     }
 }

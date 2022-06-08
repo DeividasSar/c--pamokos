@@ -1,12 +1,13 @@
 ﻿using Restaurant.Common;
 using Restaurant.Repositories.Entites;
+using Restaurant.Repositories.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace Restaurant.Repositories
 {
-   public class TableRepository
+   public class TableRepository : IRepository
     {
      public List <Table> Tables { get; set; }
      public TableRepository()
@@ -23,7 +24,7 @@ namespace Restaurant.Repositories
                 }
             }
         }
-        public void TableList ()
+        public void ItemsList ()
         {
             Console.Clear();
             Console.WriteLine($"{"Staliuko Nr.",10}" + "\t" + $"{"Vietų sk.",10}" + "\t" + $"{"Užimtumas",10}");

@@ -57,7 +57,7 @@ namespace Restaurant.BusinessLogic
                         }
                         else
                         {
-                            orderRepository.OrderList();
+                            orderRepository.ItemsList();
                             Console.ReadLine();
                             break;
                         }
@@ -128,7 +128,7 @@ namespace Restaurant.BusinessLogic
         public static void PayingForMeal ()
         {
             var orderRepository = new OrderRepository();
-            orderRepository.OrderList();
+            orderRepository.ItemsList();
             Console.WriteLine($"Užsakymų suma: {Globals._TableSum} eur");
             Console.WriteLine("Norėdami sumokėti užsakymą spauskite [Enter]");
             Console.ReadLine();
@@ -146,14 +146,14 @@ namespace Restaurant.BusinessLogic
         public static void WritingMealToDataBase()
         {
             var mealRepository = new MealRepository();
-            mealRepository.MealList(); //Patiekalu meniu
+            mealRepository.ItemsList(); //Patiekalu meniu
             MealOutput();              //Uzsakytas maistas kiekis
             OrderDatabase.AddOrder(Globals._MealId, Globals._MealName, Globals._MealPrice, Globals._MealPcs); //Iraso į database
         }
         public static void WritingDrinkToDataBase()
         {
             var drinkRepository = new DrinkRepository();
-            drinkRepository.DrinkList(); //Gėrimu meniu
+            drinkRepository.ItemsList(); //Gėrimu meniu
             DrinkOutput();
             OrderDatabase.AddOrder(Globals._DrinkId, Globals._DrinkName, Globals._DrinkPrice, Globals._DrinkPcs);
 
