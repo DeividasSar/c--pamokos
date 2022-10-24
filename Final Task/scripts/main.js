@@ -56,7 +56,7 @@ function tasksRawDataApi(){
         if (result.error) {
         }
         else{
-            const container = document.querySelector('#tasks');
+            var container = document.querySelector('#tasks');
             for (let i=0; i < result.length; i++) {
                 if(result[i].userId == userId) {
 //TASK CREATE
@@ -104,8 +104,7 @@ function tasksRawDataApi(){
                     taskEdit.addEventListener("click", () => {
                         if (taskEdit.innerText.toLocaleLowerCase() == "edit") {
 
-                            taskId.contentEditable = true; 
-                            taskId.style.backgroundColor = "#dddbdb"; 
+                            taskId.contentEditable = false; 
                             taskType.contentEditable = true; 
                             taskType.style.backgroundColor = "#dddbdb";
                             taskContent.contentEditable = true; 
@@ -131,7 +130,6 @@ function tasksRawDataApi(){
                                 window.location.href = "../pages/main.html";
                             });
                         }else {
-                            taskId.setAttribute("readonly", "readonly");
                             taskType.setAttribute("readonly", "readonly");
                             taskContent.setAttribute("readonly", "readonly");
                             taskEndDate.setAttribute("readonly", "readonly");

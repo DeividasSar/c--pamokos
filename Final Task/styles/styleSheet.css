@@ -39,16 +39,10 @@ button{
 }
 
 main{
-    position: absolute;
-    top: 10%;
-  left: 10%;
-  width: 200px;
-    float: left;
-    margin: 0 1.5%;
-    width: 30%;
+    display: flex;
     justify-content: left;
     height:fit-content;
-    width: 250px;
+    width: 300px;
 	min-width: 100px;
 	min-height: 60px;
     padding: 25px;
@@ -61,17 +55,19 @@ main{
     font-size: 15px;
     letter-spacing: 1px;
 }
-.task{
-    padding: 10px;
-}
-#tasks .task .content .text{
-    display: grid;
-    flex-direction: column;
-    justify-content: space-around;
-    padding: 20px;
-    border-radius: 10px;
-    margin-bottom: 10px;
-}
+.flex-container {
+    justify-content: left;
+    height:fit-content;
+    width: 300px;
+	min-width: 100px;
+	min-height: 60px;
+    padding: 25px;
+	border-radius: 10px;
+    margin-bottom: 25px;
+    font-size: 15px;
+    letter-spacing: 1px;
+  }
+  
 
 nav{
     position: fixed; 
